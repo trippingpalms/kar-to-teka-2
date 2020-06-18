@@ -76,7 +76,9 @@ namespace kar_to_teka_2.Models
         }
         public void UnassignCrime(UnassignCrimeViewModel unassignCrimeViewModel)
         {
+            Criminal criminal = unassignCrimeViewModel.Criminal;
 
+            databaseCriminals.FindOneAndReplace(x => x._id == criminal._id, criminal);
         }
         public List<Crime> GetCrimes()
         {

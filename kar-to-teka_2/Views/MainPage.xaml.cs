@@ -127,9 +127,15 @@ namespace kar_to_teka_2.Views
 
                     foreach (var itemTwo in listOfCommittedCrimes)
                     {
-                        if (itemTwo._id == (ObjectId)CommittedCrimesListBox.SelectedValue)
+                        CommittedCrime selectedItem = (CommittedCrime)CommittedCrimesListBox.SelectedItem;
+                        if (itemTwo._id == selectedItem._id)
                         {
-
+                            CrimeNameTextBlock.Text = selectedItem.Crime.Name;
+                            CrimeParagraphNumberTextBlock.Text = Convert.ToString(selectedItem.Crime.Paragraph);
+                            CrimeParagraphDescriptionTextBlock.Text = selectedItem.Crime.Description;
+                            CrimeDescriptionTextBlock.Text = selectedItem.Description;
+                            CrimeImprisonmentDateTextBlock.Text = selectedItem.ImprisonmentDate.ToString().Substring(0, 10);
+                            CrimeImprisonmentLengthTextBlock.Text = Convert.ToString(selectedItem.ImprisonmentLength);
                         }
                     }
                 }

@@ -25,7 +25,7 @@
         <Viewbox Grid.Row="0" Grid.Column="0" Margin="10">
             <Label Content="Przestępstwo:"/>
         </Viewbox>
-        <ComboBox Grid.Row="0" Grid.Column="1" Margin="10" Name="CommittedCrimesComboBox" FontSize="36" IsEditable="True" ItemsSource="{Binding}" SelectedValuePath="_id" DisplayMemberPath="Name"/>
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="10" Name="CommittedCrimesComboBox" FontSize="36" IsEditable="True" ItemsSource="{Binding}" SelectedValuePath="_id" SelectionChanged="DisplayCommittedCrimeData"/>
 
         <Viewbox Grid.Row="1" Grid.Column="0" Margin="10">
             <Label Content="Numer paragrafu:"/>

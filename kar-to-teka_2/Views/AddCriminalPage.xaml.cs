@@ -43,7 +43,8 @@ namespace kar_to_teka_2.Views
             addCriminalViewModel.BirthPlace = CriminalBirthPlaceTextBox.Text;
             if (CriminalUnknownBirthDateCheckBox.IsChecked == false)
             {
-                addCriminalViewModel.BirthDate = (DateTime)CriminalBirthDateCalendar.SelectedDate;
+                DateTime selectedDate = (DateTime)CriminalBirthDateCalendar.SelectedDate;
+                addCriminalViewModel.BirthDate = selectedDate.AddDays(1);
             }
             if (CriminalWantedCheckBox.IsChecked == true)
             {

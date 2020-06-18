@@ -50,15 +50,33 @@ namespace kar_to_teka_2.Views
 
             foreach (var item in listOfCommittedCrimes)
             {
-                if (item._id == (ObjectId)CommittedCrimesComboBox.SelectedValue)
+                CommittedCrime committedCrime = (CommittedCrime)CommittedCrimesComboBox.SelectedItem;
+                if (item._id == committedCrime._id)
                 {
                     criminal.CommittedCrimes.Remove(item);
                 }
             }
 
+            Database database = Database.Instance;
+            database.UnassignCrime(unassignCrimeViewModel);
+
             MessageBox.Show("Przestępstwo zostało usunięte z profilu przestępcy w bazie.", "Sukces!");
 
             this.NavigationService.Navigate(new MainPage());
+        }
+
+        private void DisplayCommittedCrimeData(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (var item in listOfCommittedCrimes)
+            {
+                CommittedCrime committedCrime = (CommittedCrime)CommittedCrimesComboBox.SelectedItem;
+                if (item._id == committedCrime._id)
+                {
+                    ParagraphNumberTextBlock.Text = Convert.ToString(item.Crime.Paragraph);
+                    ImprisonmentDateTextBlock.Text = item.ImprisonmentDate.ToString().Substring(0, 10);
+                    CrimeDescriptionTextBox.Text = item.Description;
+                }
+            }
         }
     }
 }

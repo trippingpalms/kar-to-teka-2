@@ -42,6 +42,7 @@ namespace kar_to_teka_2.Views
         private void AssignCrime(object sender, RoutedEventArgs e)
         {
             AssignCrimeViewModel assignCrimeViewModel = new AssignCrimeViewModel();
+            DateTime selectedDate;
 
             assignCrimeViewModel.Criminal = criminal;
             foreach (var item in listOfCrimes)
@@ -52,7 +53,8 @@ namespace kar_to_teka_2.Views
                 }
             }
             assignCrimeViewModel.Description = CrimeDescriptionTextBox.Text;
-            assignCrimeViewModel.ImprisonmentDate = (DateTime)ImprisonmentDateCalendar.SelectedDate;
+            selectedDate = (DateTime)ImprisonmentDateCalendar.SelectedDate;
+            assignCrimeViewModel.ImprisonmentDate = selectedDate.AddDays(1);
             assignCrimeViewModel.ImprisonmentLength = Convert.ToInt32(ImprisonmentLengthTextBox.Text);
 
             Database database = Database.Instance;
