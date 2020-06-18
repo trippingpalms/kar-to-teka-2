@@ -126,15 +126,40 @@ namespace kar_to_teka_2.Models
         {
             return databaseCriminals.Find(x => !String.IsNullOrEmpty(x.Name) && !String.IsNullOrEmpty(x.Surname)).ToList<Criminal>();
         }
+        public void AddCriminalPhoto(AddCriminalPhotoViewModel addCriminalPhotoViewModel)
+        {
+            Criminal criminal = new Criminal();
+
+            criminal._id = addCriminalPhotoViewModel.Criminal._id;
+            criminal.Name = addCriminalPhotoViewModel.Criminal.Name;
+            criminal.Surname = addCriminalPhotoViewModel.Criminal.Surname;
+            criminal.Nickname = addCriminalPhotoViewModel.Criminal.Nickname;
+            criminal.Residence = addCriminalPhotoViewModel.Criminal.Residence;
+            criminal.BirthPlace = addCriminalPhotoViewModel.Criminal.BirthPlace;
+            criminal.BirthDate = addCriminalPhotoViewModel.Criminal.BirthDate;
+            criminal.Wanted = addCriminalPhotoViewModel.Criminal.Wanted;
+            criminal.CommittedCrimes = addCriminalPhotoViewModel.Criminal.CommittedCrimes;
+            criminal.Image = addCriminalPhotoViewModel.Image;
+
+            databaseCriminals.FindOneAndReplace(x => x._id == addCriminalPhotoViewModel.Criminal._id, criminal);
+        }
 
         public List<string> GetStatistics()
         {
             List<string> listOfStatistics = new List<string>();
+            List<Criminal> listOfCriminals;
 
             long numberOfCrimes = databaseCrimes.Count(x => !String.IsNullOrEmpty(x.Name));
             listOfStatistics.Add(Convert.ToString(numberOfCrimes));
             long numberOfCriminals = databaseCriminals.Count(x => !String.IsNullOrEmpty(x.Name) && !String.IsNullOrEmpty(x.Surname));
             listOfStatistics.Add(Convert.ToString(numberOfCriminals));
+            long numberOfCommittedCrimes = 0;
+            listOfCriminals = databaseCriminals.Find(x => !String.IsNullOrEmpty(x.Name) && !String.IsNullOrEmpty(x.Surname)).ToList<Criminal>();
+            foreach (var item in listOfCriminals)
+            {
+                numberOfCommittedCrimes += item.CommittedCrimes.Count;
+            }
+            listOfStatistics.Add(Convert.ToString(numberOfCommittedCrimes));
 
             return listOfStatistics;
         }

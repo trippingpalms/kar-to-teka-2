@@ -17,5 +17,6 @@ namespace kar_to_teka_2.Models
         public DateTime BirthDate { get; set; }
         public bool Wanted { get; set; }
         public List<CommittedCrime> CommittedCrimes { get; set; }
+        public byte[] Image { get; set; }
     }
 }

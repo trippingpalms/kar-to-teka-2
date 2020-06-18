@@ -25,29 +25,29 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Viewbox Grid.Row="0" Grid.Column="0" Margin="10">
+        <Viewbox Grid.Row="0" Grid.Column="1" Margin="10">
             <Label Content="Statystyki ogólne:"/>
         </Viewbox>
         <Viewbox Grid.Row="0" Grid.Column="1" Margin="10">
-            <Label Content="Statystyki szczegółowe:"/>
+            <Label Content=""/>
         </Viewbox>
 
-        <Viewbox Grid.Row="1" Grid.Column="0" Margin="10">
+        <Viewbox Grid.Row="1" Grid.Column="1" Margin="10">
             <Label Content="Liczba aktów prawnych:"/>
         </Viewbox>
-        <Viewbox Grid.Row="2" Grid.Column="0" Margin="10">
+        <Viewbox Grid.Row="2" Grid.Column="1" Margin="10">
             <TextBlock Name="NumberOfCrimesTextBlock" Text="---"/>
         </Viewbox>
-        <Viewbox Grid.Row="3" Grid.Column="0" Margin="10">
+        <Viewbox Grid.Row="3" Grid.Column="1" Margin="10">
             <Label Content="Liczba przestępców:"/>
         </Viewbox>
-        <Viewbox Grid.Row="4" Grid.Column="0" Margin="10">
+        <Viewbox Grid.Row="4" Grid.Column="1" Margin="10">
             <TextBlock Name="NumberOfCriminalsTextBlock" Text="---"/>
         </Viewbox>
-        <Viewbox Grid.Row="5" Grid.Column="0" Margin="10">
+        <Viewbox Grid.Row="5" Grid.Column="1" Margin="10">
             <Label Content="Liczba popełnionych przestępstw:"/>
         </Viewbox>
-        <Viewbox Grid.Row="6" Grid.Column="0" Margin="10">
+        <Viewbox Grid.Row="6" Grid.Column="1" Margin="10">
             <TextBlock Name="NumberOfCommittedCrimesTextBlock" Text="---"/>
         </Viewbox>
 

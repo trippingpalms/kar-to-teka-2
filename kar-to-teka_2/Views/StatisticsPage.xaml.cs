@@ -32,6 +32,7 @@ namespace kar_to_teka_2.Views
 
             NumberOfCrimesTextBlock.Text = listOfStatistics[0];
             NumberOfCriminalsTextBlock.Text = listOfStatistics[1];
+            NumberOfCommittedCrimesTextBlock.Text = listOfStatistics[2];
         }
 
         private void ReturnToMainPage(object sender, RoutedEventArgs e)

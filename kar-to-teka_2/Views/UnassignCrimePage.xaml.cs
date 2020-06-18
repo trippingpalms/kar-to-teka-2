@@ -31,7 +31,7 @@ namespace kar_to_teka_2.Views
             InitializeComponent();
 
             this.criminal = criminal;
-            listOfCommittedCrimes = criminal.CommittedCrimes;
+            listOfCommittedCrimes = criminal.CommittedCrimes.ToList<CommittedCrime>();
 
             CommittedCrimesComboBox.DataContext = listOfCommittedCrimes;
         }
@@ -46,9 +46,9 @@ namespace kar_to_teka_2.Views
             UnassignCrimeViewModel unassignCrimeViewModel = new UnassignCrimeViewModel();
 
             unassignCrimeViewModel.Criminal = criminal;
-            unassignCrimeViewModel.CommittedCrimes = criminal.CommittedCrimes;
+            unassignCrimeViewModel.CommittedCrimes = criminal.CommittedCrimes.ToList<CommittedCrime>();
 
-            foreach (var item in listOfCommittedCrimes)
+            foreach (var item in unassignCrimeViewModel.CommittedCrimes)
             {
                 CommittedCrime committedCrime = (CommittedCrime)CommittedCrimesComboBox.SelectedItem;
                 if (item._id == committedCrime._id)

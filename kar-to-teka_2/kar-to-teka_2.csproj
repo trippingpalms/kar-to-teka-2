@@ -95,6 +95,7 @@
     <Compile Include="Models\Criminal.cs" />
     <Compile Include="Models\Database.cs" />
     <Compile Include="ViewModels\AddCrimeViewModel.cs" />
+    <Compile Include="ViewModels\AddCriminalPhotoViewModel.cs" />
     <Compile Include="ViewModels\AddCriminalViewModel.cs" />
     <Compile Include="ViewModels\AssignCrimeViewModel.cs" />
     <Compile Include="ViewModels\EditCriminalViewModel.cs" />

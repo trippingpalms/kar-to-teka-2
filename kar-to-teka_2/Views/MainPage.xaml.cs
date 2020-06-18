@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using kar_to_teka_2.Models;
+using kar_to_teka_2.ViewModels;
 using MongoDB.Bson;
+using Microsoft.Win32;
+
 
 namespace kar_to_teka_2.Views
 {
@@ -55,7 +59,31 @@ namespace kar_to_teka_2.Views
         }
         private void AddPhoto(object sender, RoutedEventArgs e)
         {
+            AddCriminalPhotoViewModel addCriminalPhotoViewModel = new AddCriminalPhotoViewModel();
 
+            foreach (var item in listOfCriminals)
+            {
+                if (item._id == (string)CriminalsComboBox.SelectedValue)
+                {
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    openFileDialog.Filter = "png|*.png|jpeg|*.jpg";
+                    openFileDialog.Title = "Wybierz zdjęcie przestępcy";
+
+                    if ((bool)openFileDialog.ShowDialog())
+                    {
+                        string fileName = openFileDialog.FileName;
+                        byte[] fileBytes = File.ReadAllBytes(fileName);
+
+                        addCriminalPhotoViewModel.Criminal = (Criminal)CriminalsComboBox.SelectedItem;
+                        addCriminalPhotoViewModel.Image = fileBytes;
+
+                        Database database = Database.Instance;
+                        database.AddCriminalPhoto(addCriminalPhotoViewModel);
+
+                        MessageBox.Show("Dodano zdjęcie do profilu przestępcy w bazie.", "Sukces!");
+                    }
+                }
+            }
         }
 
         private void AddCrime(object sender, RoutedEventArgs e)
@@ -113,6 +141,27 @@ namespace kar_to_teka_2.Views
 
                     listOfCommittedCrimes = item.CommittedCrimes;
                     CommittedCrimesListBox.DataContext = item.CommittedCrimes;
+
+                    try
+                    {
+                        BitmapImage criminalImage = new BitmapImage();
+                        using (MemoryStream memoryStream = new MemoryStream(item.Image))
+                        {
+                            memoryStream.Position = 0;
+                            criminalImage.BeginInit();
+                            criminalImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                            criminalImage.CacheOption = BitmapCacheOption.OnLoad;
+                            criminalImage.UriSource = null;
+                            criminalImage.StreamSource = memoryStream;
+                            criminalImage.EndInit();
+
+                            CriminalImage.Source = criminalImage;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Profil przestępcy nie zawiera zdjęcie. Dodaj zdjęcie, aby uzupełnić profil.", "Problem!");
+                    }
                 }
             }
         }
