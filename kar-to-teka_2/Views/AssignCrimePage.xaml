@@ -1,0 +1,57 @@
+﻿<Page x:Class="kar_to_teka_2.Views.AssignCrimePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kar_to_teka_2.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="AssignCrimePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Viewbox Grid.Row="0" Grid.Column="0" Margin="10">
+            <Label Content="Przestępstwo:"/>
+        </Viewbox>
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="10" Name="CrimesComboBox" FontSize="36" IsEditable="True" ItemsSource="{Binding}" SelectedValuePath="_id" DisplayMemberPath="Name"/>
+        
+        <Viewbox Grid.Row="1" Grid.Column="0" Margin="10">
+            <Label Content="Dodatkowy opis:"/>
+        </Viewbox>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" Padding="10" Name="CrimeDescriptionTextBox" FontSize="36" TextWrapping="WrapWithOverflow"/>
+
+        <Viewbox Grid.Row="2" Grid.Column="0" Margin="10">
+            <Label Content="Data i długość kary:"/>
+        </Viewbox>
+        <Grid Grid.Row="2" Grid.RowSpan="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Viewbox Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="10">
+                <Calendar Grid.Row="3" Grid.Column="1" Name="ImprisonmentDateCalendar" SelectedDate="01-01-1970" DisplayDate="01-01-1970"/>
+            </Viewbox>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="10" Name="ImprisonmentLengthTextBox" FontSize="36" Text="{Binding ElementName=ImprisonmentLengthSlider, Path=Value}"/>
+            <Slider Grid.Row="1" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" Name="ImprisonmentLengthSlider" Minimum="1" Maximum="25" IsSnapToTickEnabled="True" TickFrequency="1"/>
+        </Grid>
+
+        <Button Grid.Row="4" Grid.Column="0" Margin="10" Name="ReturnButton" Content="Cofnij" FontSize="36" Click="ReturnToMainPage"/>
+        <Button Grid.Row="4" Grid.Column="1" Margin="10" Name="AssignButton" Content="Przypisz" FontSize="36" Click="AssignCrime"/>
+    </Grid>
+</Page>

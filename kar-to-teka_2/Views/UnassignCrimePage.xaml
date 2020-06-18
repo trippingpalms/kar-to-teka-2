@@ -1,0 +1,52 @@
+﻿<Page x:Class="kar_to_teka_2.Views.UnassignCrimePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kar_to_teka_2.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="UnassignCrimePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Viewbox Grid.Row="0" Grid.Column="0" Margin="10">
+            <Label Content="Przestępstwo:"/>
+        </Viewbox>
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="10" Name="CommittedCrimesComboBox" FontSize="36" IsEditable="True" ItemsSource="{Binding}" SelectedValuePath="_id" DisplayMemberPath="Name"/>
+
+        <Viewbox Grid.Row="1" Grid.Column="0" Margin="10">
+            <Label Content="Numer paragrafu:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.Column="1" Margin="10">
+            <TextBlock Name="ParagraphNumberTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+
+        <Viewbox Grid.Row="2" Grid.Column="0" Margin="10">
+            <Label Content="Data skazania:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="2" Grid.Column="1" Margin="10">
+            <TextBlock Name="ImprisonmentDateTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+
+        <Viewbox Grid.Row="3" Grid.Column="0" Margin="10">
+            <Label Content="Opis przestępstwa:"/>
+        </Viewbox>
+        <TextBox Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Margin="10" Name="CrimeDescriptionTextBox" FontSize="24" Text="---" IsReadOnly="True" TextWrapping="WrapWithOverflow"/>
+
+        <Button Grid.Row="5" Grid.Column="0" Margin="10" Name="ReturnButton" Content="Cofnij" FontSize="36" Click="ReturnToMainPage"/>
+        <Button Grid.Row="5" Grid.Column="1" Margin="10" Name="UnassignButton" Content="Usuń" FontSize="36" Click="UnassignCrime"/>
+    </Grid>
+</Page>

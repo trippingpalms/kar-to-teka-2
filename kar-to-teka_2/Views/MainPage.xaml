@@ -1,0 +1,150 @@
+﻿<Page x:Class="kar_to_teka_2.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kar_to_teka_2.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <ComboBox Grid.Row="0" Grid.Column="0" Margin="5" Name="CriminalsComboBox" FontSize="16" IsEditable="True" ItemsSource="{Binding}" SelectedValuePath="_id" SelectionChanged="DisplayCriminalData">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding Name}" />
+                        <Run Text="{Binding Surname}" />
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Viewbox Grid.Row="1" Grid.Column="0" Margin="5">
+            <Label Content="Imię:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="2" Grid.Column="0" Margin="5">
+            <TextBlock Name="CriminalNameTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="3" Grid.Column="0" Margin="5">
+            <Label Content="Nazwisko:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="4" Grid.Column="0" Margin="5">
+            <TextBlock Name="CriminalSurnameTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="5" Grid.Column="0" Margin="5">
+            <Label Content="Data urodzenia:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="6" Grid.Column="0" Margin="5">
+            <TextBlock Name="CriminalBirthDateTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="7" Grid.Column="0" Margin="5">
+            <Label Content="Miejsce zameldowania:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="8" Grid.Column="0" Margin="5">
+            <TextBlock Name="CriminalResidenceTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="9" Grid.Column="0" Margin="5">
+            <Label Content="Miejsce urodzenia:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="10" Grid.Column="0" Margin="5">
+            <TextBlock Name="CriminalBirthPlaceTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="11" Grid.Column="0" Margin="5">
+            <Label Content="Poszukiwany:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="12" Grid.Column="0" Margin="5">
+            <TextBlock Name="CriminalWantedTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="13" Grid.Column="0" Margin="5">
+            <Label Content="Pseudonim:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="14" Grid.Column="0" Margin="5">
+            <TextBlock Name="CriminalNicknameTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="15" Grid.Column="0" Margin="5">
+            <Label Content="Data wyjścia:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="16" Grid.RowSpan="2" Grid.Column="0" Margin="5">
+            <TextBlock Name="CriminalLeavingDateTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+
+        <Button Grid.Row="0" Grid.Column="1" Margin="5" Name="AssignCrimePage" Content="Dodaj popełnione przestępstwo" Click="AssignCrime"/>
+        <Viewbox Grid.Row="1" Grid.Column="1" Margin="5">
+            <Label Content="Popełnione przestępstwa:"/>
+        </Viewbox>
+        <ListBox Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Margin="5" Name="CommittedCrimesListBox" ItemsSource="{Binding}" SelectedValuePath="_id" DisplayMemberPath="Name" SelectionChanged="DisplayCommittedCrimeData"/>
+
+        <Viewbox Grid.Row="4" Grid.Column="1" Margin="5">
+            <Label Content="Przestępstwo:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="5" Grid.Column="1" Margin="5">
+            <TextBlock Name="CrimeNameTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="6" Grid.Column="1" Margin="5">
+            <Label Content="Paragraf:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="7" Grid.Column="1" Margin="5">
+            <TextBlock Name="CrimeParagraphNumberTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="8" Grid.Column="1" Margin="5">
+            <Label Content="Treść paragrafu:"/>
+        </Viewbox>
+        <TextBox Grid.Row="9" Grid.RowSpan="2" Margin="5" Grid.Column="1" Name="CrimeParagraphDescriptionTextBlock" FontSize="24" Text="---" IsReadOnly="True" TextWrapping="WrapWithOverflow"/>
+        <Viewbox Grid.Row="11" Grid.Column="1" Margin="5">
+            <Label Content="Długość kary:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="12" Grid.Column="1" Margin="5">
+            <TextBlock Name="CrimeImprisonmentLengthTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="13" Grid.Column="1" Margin="5">
+            <Label Content="Data skazania:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="14" Grid.Column="1" Margin="5">
+            <TextBlock Name="CrimeImprisonmentDateTextBlock" FontSize="36" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="15" Grid.Column="1" Margin="5">
+            <Label Content="Dodatkowy opis:"/>
+        </Viewbox>
+        <TextBox Grid.Row="16" Grid.RowSpan="2" Grid.Column="1" Margin="5" Name="CrimeDescriptionTextBlock" FontSize="24" Text="---" IsReadOnly="True" TextWrapping="WrapWithOverflow"/>
+
+        <Image Grid.Row="0" Grid.RowSpan="5" Grid.Column="2" Margin="5"/>
+        <Button Grid.Row="5" Grid.Column="2" Margin="5" Name="AddCriminalButton" Content="Dodaj przestępcę" Click="AddCriminal"/>
+        <Button Grid.Row="6" Grid.Column="2" Margin="5" Name="EditCriminalDataButton" Content="Edytuj dane przestępcy" Click="EditCriminal"/>
+        <Button Grid.Row="7" Grid.Column="2" Margin="5" Name="AddPhotoButton" Content="Dodaj zdjęcie przestępcy" Click="AddPhoto"/>
+        <Button Grid.Row="8" Grid.Column="2" Margin="5" Name="ClearCriminalFileButton" Content="Wyczyść kartotekę przestępcy" Click="UnassignCrime"/>
+        <Button Grid.Row="9" Grid.Column="2" Margin="5" Name="AddCrimeToFileButton" Content="Dodaj akt prawny do kartoteki" Click="AddCrime"/>
+        <Button Grid.Row="10" Grid.Column="2" Margin="5" Name="ShowStatisticsButton" Content="Pokaż statystyki" Click="ShowStatistics"/>
+
+        <Viewbox Grid.Row="11" Grid.Column="2" Margin="5">
+            <Label Content="Lista aktów prawnych:"/>
+        </Viewbox>
+        <ListBox Grid.Row="12" Grid.RowSpan="5" Grid.Column="2" Margin="5" Name="CrimesListBox" ItemsSource="{Binding}" DisplayMemberPath="Name"/>
+        <CheckBox Grid.Row="17" Grid.Column="2" Margin="5" Name="FilterCheckBox" Content="Filtruj według aktu prawnego"/>
+    </Grid>
+</Page>

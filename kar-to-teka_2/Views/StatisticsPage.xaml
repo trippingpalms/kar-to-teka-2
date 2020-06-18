@@ -1,0 +1,56 @@
+﻿<Page x:Class="kar_to_teka_2.Views.StatisticsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kar_to_teka_2.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="StatisticsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Viewbox Grid.Row="0" Grid.Column="0" Margin="10">
+            <Label Content="Statystyki ogólne:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="0" Grid.Column="1" Margin="10">
+            <Label Content="Statystyki szczegółowe:"/>
+        </Viewbox>
+
+        <Viewbox Grid.Row="1" Grid.Column="0" Margin="10">
+            <Label Content="Liczba aktów prawnych:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="2" Grid.Column="0" Margin="10">
+            <TextBlock Name="NumberOfCrimesTextBlock" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="3" Grid.Column="0" Margin="10">
+            <Label Content="Liczba przestępców:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="4" Grid.Column="0" Margin="10">
+            <TextBlock Name="NumberOfCriminalsTextBlock" Text="---"/>
+        </Viewbox>
+        <Viewbox Grid.Row="5" Grid.Column="0" Margin="10">
+            <Label Content="Liczba popełnionych przestępstw:"/>
+        </Viewbox>
+        <Viewbox Grid.Row="6" Grid.Column="0" Margin="10">
+            <TextBlock Name="NumberOfCommittedCrimesTextBlock" Text="---"/>
+        </Viewbox>
+
+        <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Margin="10" FontSize="36" Content="Cofnij" Click="ReturnToMainPage"/>
+    </Grid>
+</Page>
